@@ -67,7 +67,9 @@ def _test_case(case, model_type):
         petab.flatten_timepoint_specific_output_overrides(problem)
     model_output_dir = f'amici_models/model_{case}'
     model = import_petab_problem(
-        problem, model_output_dir=model_output_dir,
+        petab_problem=problem,
+        model_output_dir=model_output_dir,
+        model_name=f"petab_{model_type}_test_case_{case}",
         force_compile=True)
     solver = model.getSolver()
     solver.setSteadyStateToleranceFactor(1.0)
